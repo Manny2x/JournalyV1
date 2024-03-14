@@ -21,11 +21,11 @@ public class ConsoleLogger {
                         .format(LocalDateTime.now()));
         System.out.println(log);
     }
-    public void logError() throws IOException {
+    public void logError() {
         String log = ("ERROR: " + this.info + " @ " +
                 DateTimeFormatter
                         .ofPattern("dd/MM/yyyy HH:mm:ss")
-                        .format(LocalDateTime.now()));
+                        .format(LocalDateTime.now()) );
         System.out.println(log);
     }
 

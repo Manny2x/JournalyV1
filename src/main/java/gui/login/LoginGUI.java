@@ -1,19 +1,26 @@
-package login;
+package gui.login;
 
+import data.Account;
+import data.exceptions.AccountNotFoundException;
+import gui.main.MainMenuGUI;
 import logger.ConsoleLogger;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class LoginGUI {
-    public LoginGUI(String[] args) {
+    public LoginGUI() {
         ConsoleLogger logger = new ConsoleLogger();
 
         JFrame frame = new JFrame();
         frame.setTitle("Journaly Version 1.0");
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int height = screenSize.height;
+        int width = screenSize.width;
+        frame.setSize((int) (width * 0.25), (int) (height * 0.25));
+        frame.setLocationRelativeTo(null);
 
-        //frame.setResizable(false);
-        frame.setSize(600, 350);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLayout(new BorderLayout());
@@ -26,6 +33,10 @@ public class LoginGUI {
 
 
         // Inputs
+        JLabel errorLabel = new JLabel("");
+        errorLabel.setForeground(Color.red);
+        errorLabel.setVisible(false);
+
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridBagLayout());
 
@@ -41,9 +52,19 @@ public class LoginGUI {
         passwordButton.addActionListener(e -> {
             logger.setInfo("Password attempted to submit");
             logger.logAction();
-            LoginRequest loginRequest = new LoginRequest(userInput.getText(),
-                    new String(passwordField.getPassword()));
-            loginRequest.exists();
+
+            try {
+                LoginRequest loginRequest = new LoginRequest(userInput.getText(),
+                        new String(passwordField.getPassword()));
+                loginRequest.check();
+                new MainMenuGUI(Account.getAccount(loginRequest));
+            } catch (AccountNotFoundException | IOException ex) {
+                logger.setInfo(ex.toString());
+                logger.logError();
+
+                errorLabel.setText(ex.toString());
+                errorLabel.setVisible(true);
+            }
         });
 
         JButton createAccountButton = new JButton("Create Account");
@@ -73,10 +94,13 @@ public class LoginGUI {
         inputPanel.add(passwordButton, gbc);
         gbc.gridy = 3;
         inputPanel.add(createAccountButton, gbc);
+        gbc.gridy = 4;
+        inputPanel.add(errorLabel, gbc);
 
 
 
         frame.add(titlePanel, BorderLayout.NORTH);
         frame.add(inputPanel, BorderLayout.CENTER);
     }
+
 }
