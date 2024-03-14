@@ -1,20 +1,10 @@
 package gui.login;
 
-<<<<<<< HEAD
-=======
-import com.fasterxml.jackson.core.JsonProcessingException;
->>>>>>> origin/master
 import data.Account;
 import logger.ConsoleLogger;
 
 import javax.swing.*;
 import java.awt.*;
-<<<<<<< HEAD
-=======
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
->>>>>>> origin/master
 import java.io.IOException;
 
 public class CreateAccountGUI {

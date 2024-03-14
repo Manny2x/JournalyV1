@@ -3,22 +3,11 @@ package gui.login;
 import data.exceptions.AccountNotFoundException;
 import logger.ConsoleLogger;
 
-<<<<<<< HEAD
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-=======
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Objects;
->>>>>>> origin/master
+
 
 public class LoginRequest {
     ConsoleLogger logger = new ConsoleLogger();

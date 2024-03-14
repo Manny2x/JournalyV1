@@ -1,7 +1,6 @@
 package data;
 
 
-<<<<<<< HEAD
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import data.logic.IDCreator;
@@ -9,16 +8,7 @@ import gui.login.LoginRequest;
 
 import java.io.File;
 import java.io.IOException;
-=======
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import data.exceptions.AccountNotFoundException;
-import data.logic.IDCreator;
-import gui.login.LoginRequest;
 
-import java.io.*;
->>>>>>> origin/master
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
