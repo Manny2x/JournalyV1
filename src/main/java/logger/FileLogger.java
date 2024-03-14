@@ -19,7 +19,7 @@ public class FileLogger {
     }
     public void logAction() throws IOException {
         FileWriter fileWriter = new FileWriter(
-                new File("/db/ActionLogs.log")
+                "/db/ActionLogs.log"
                 , true);
         fileWriter.write(this.info + ">>Happened at>> " +
                 DateTimeFormatter
@@ -34,7 +34,7 @@ public class FileLogger {
     }
     public void logError() throws IOException {
         FileWriter fileWriter = new FileWriter(
-                new File("/db/ErrorLogs.log")
+                "/db/ErrorLogs.log"
                 , true);
         fileWriter.write(this.info + ">>Happened at>> " +
                 DateTimeFormatter
