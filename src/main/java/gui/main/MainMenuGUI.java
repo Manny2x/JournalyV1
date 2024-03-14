@@ -18,7 +18,10 @@ public class MainMenuGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLayout(new BorderLayout());
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
     }
 }
