@@ -57,8 +57,10 @@ public class LoginGUI {
                 LoginRequest loginRequest = new LoginRequest(userInput.getText(),
                         new String(passwordField.getPassword()));
                 loginRequest.check();
+                frame.setVisible(false);
                 new MainMenuGUI(Account.getAccount(loginRequest));
             } catch (AccountNotFoundException | IOException ex) {
+                ex.printStackTrace();
                 logger.setInfo(ex.toString());
                 logger.logError();
 

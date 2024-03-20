@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import data.logic.IDCreator;
 import gui.login.LoginRequest;
+import process.Main;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +24,11 @@ public class Account {
             "IdeaProjects\\JournalyV1Database\\";
 
     SortedSet<Entry> entries = new TreeSet<>(Comparator
-            .comparingLong(a -> a.timeMillis));
+            .comparingLong(a -> a.timeMillis)) {
+        {
+            add(new Entry(Main.boilerplateText));
+        }
+    };
 
     public Account(String username, String password){
         this.username = username;
@@ -38,9 +43,10 @@ public class Account {
                 Account.class);
     }
 
-    public void create() throws IOException {
+    public void update() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        Files.createFile(Path.of(dbLocation + username + ".txt"));
+        if(!Files.exists(Path.of(dbLocation + username + ".txt")))
+            Files.createFile(Path.of(dbLocation + username + ".txt"));
         mapper.writeValue(new File(dbLocation + username + ".txt"), this);
     }
 

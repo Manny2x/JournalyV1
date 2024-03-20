@@ -89,7 +89,7 @@ public class CreateAccountGUI {
                 try{
                     Account account = new Account(userInput.getText(),
                             new String(passwordField.getPassword()));
-                    account.create();
+                    account.update();
                     frame1.setVisible(false);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
